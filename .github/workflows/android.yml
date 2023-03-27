@@ -1,9 +1,13 @@
 name: Android CI
 
 on:
+  push:
+    branches-ignore:
+      - main
+      - 'V-**'
   pull_request:
-    types: [opened, reopened, edited]
-    branches: ['V-**']
+    types: [ opened, reopened ]
+    branches: [ 'V-**' ]
 
 jobs:
   build:
