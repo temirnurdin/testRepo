@@ -1,0 +1,29 @@
+name: Android Pull Request Lint
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - 'V-**'
+  pull_request:
+    types: [ opened, reopened ]
+    branches: [ 'V-**' ]
+
+jobs:
+  android-lint:
+    name: Run Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Run Android Lint
+        run: ./gradlew lintDebug
+      - uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: app/build/reports/lint-results-debug.sarif
+          category: lint
