@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="just_for_an_instance">Just for an instance</string>
 </resources>
