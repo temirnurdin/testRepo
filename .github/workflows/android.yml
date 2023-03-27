@@ -2,7 +2,8 @@ name: Android CI
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, edited]
+    branches: ['V-**']
 
 jobs:
   build:
