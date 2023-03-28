@@ -11,7 +11,7 @@ on:
 
 jobs:
   android-lint:
-    name: Run Lint
+    name: Run Android Lint
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,12 +22,12 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - name: setup JDK 11
+      - name: Setup JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: '11'
           distribution: 'temurin'
-          cache: gradle
+          cache: 'gradle'
       - name: Run Android Lint
         run: ./gradlew lintDebug
       - uses: github/codeql-action/upload-sarif@v2
